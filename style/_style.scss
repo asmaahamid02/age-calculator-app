@@ -1,0 +1,256 @@
+@mixin font(
+  $font-family,
+  $font-file,
+  $font-weight: 'normal',
+  $font-style: 'normal'
+) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file) format('truetype');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+@include font('Poppins', '../assets/fonts/Poppins-Regular.ttf');
+@include font(
+  'Poppins-Italic',
+  '../assets/fonts/Poppins-Italic.ttf',
+  'normal',
+  'italic'
+);
+@include font('Poppins-Bold', '../assets/fonts/Poppins-Bold.ttf', 'bold');
+@include font(
+  'Poppins-Bold-Italic',
+  '../assets/fonts/Poppins-BoldItalic.ttf',
+  'bold',
+  'italic'
+);
+@include font(
+  'Poppins-ExtraBold',
+  '../assets/fonts/Poppins-ExtraBold.ttf',
+  '800'
+);
+@include font(
+  'Poppins-ExtraBold-Italic',
+  '../assets/fonts/Poppins-ExtraBoldItalic.ttf',
+  '800',
+  'italic'
+);
+
+// Primary colors
+
+$purple: hsl(259, 100%, 65%);
+$light-red: hsl(0, 100%, 67%);
+
+// Neutral colors
+
+$white: hsl(0, 0%, 100%);
+$off-white: hsl(0, 0%, 94%);
+$light-grey: hsl(0, 0%, 86%);
+$smokey-grey: hsl(0, 1%, 44%);
+$off-black: hsl(0, 0%, 8%);
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins, Poppins-Italic, Poppins-Bold, Poppins-Bold-Italic,
+    Poppins-ExtraBold, Poppins-ExtraBold-Italic;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  background-color: $off-white;
+  color: $off-black;
+}
+
+//remove input number arrows
+/* Chrome, Safari, Edge, Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.hidden {
+  display: none;
+}
+
+main {
+  padding: 2.5em 1.5em;
+  width: 100%;
+  max-width: 42em;
+  background-color: $white;
+  margin: 7em 1em;
+  border-radius: 1.5em 1.5em 6em 1.5em;
+  box-shadow: 1px 1px 12px 0px rgba($color: $off-black, $alpha: 0.11);
+}
+
+// form
+.fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+
+    label {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: bold;
+      color: $smokey-grey;
+      margin-bottom: 0.2em;
+      font-size: 0.8em;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid $light-grey;
+      border-radius: 0.3em;
+      padding: 0.5em 0.5em 0.5em 0.5em;
+      font-size: 1.5em;
+      font-family: Poppins-Bold;
+
+      &::placeholder {
+        text-transform: uppercase;
+        font-family: Poppins-Bold;
+        font-size: 0.9em;
+        color: $smokey-grey;
+        vertical-align: middle;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $purple;
+        caret-color: $purple;
+      }
+    }
+
+    .error-text {
+      margin-top: 0.5em;
+      font-family: Poppins-Italic;
+      font-size: 0.7em;
+      color: $light-red;
+    }
+
+    &.error {
+      label {
+        color: $light-red;
+      }
+
+      input {
+        border-color: $light-red;
+      }
+    }
+  }
+}
+
+.submit-container {
+  margin: 4em 0;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .line {
+    width: 100%;
+    height: 0.15em;
+    background: $off-white;
+  }
+
+  button {
+    background-color: $purple;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    width: 5.5em;
+    height: 5.5em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins-Bold;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s;
+
+    svg {
+      width: 2.15em;
+    }
+
+    &:hover {
+      background-color: $off-black;
+    }
+  }
+}
+
+// result
+.result-container {
+  .category {
+    font-family: Poppins-ExtraBold-Italic;
+    font-size: 3em;
+    line-height: 1.2em;
+  }
+
+  .dash,
+  .number {
+    color: $purple;
+  }
+
+  .date-section {
+    flex-grow: 1;
+  }
+}
+
+// Media queries
+@media only screen and (min-width: 525px) {
+  main {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+  .fields {
+    max-width: 75%;
+
+    .input-group {
+      input {
+        &::placeholder {
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+
+  .submit-container {
+    margin-bottom: 2em;
+    button {
+      transform: translate(0%, -50%);
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .result-container {
+    .category {
+      font-size: 4.5em;
+    }
+  }
+}

@@ -1,0 +1,209 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: "normal";
+}
+@font-face {
+  font-family: "Poppins-Italic";
+  src: url("../assets/fonts/Poppins-Italic.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: "italic";
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: "bold";
+  font-style: "normal";
+}
+@font-face {
+  font-family: "Poppins-Bold-Italic";
+  src: url("../assets/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: "bold";
+  font-style: "italic";
+}
+@font-face {
+  font-family: "Poppins-ExtraBold";
+  src: url("../assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: "800";
+  font-style: "normal";
+}
+@font-face {
+  font-family: "Poppins-ExtraBold-Italic";
+  src: url("../assets/fonts/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: "800";
+  font-style: "italic";
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins, Poppins-Italic, Poppins-Bold, Poppins-Bold-Italic, Poppins-ExtraBold, Poppins-ExtraBold-Italic;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  background-color: hsl(0, 0%, 94%);
+  color: hsl(0, 0%, 8%);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.hidden {
+  display: none;
+}
+
+main {
+  padding: 2.5em 1.5em;
+  width: 100%;
+  max-width: 42em;
+  background-color: hsl(0, 0%, 100%);
+  margin: 7em 1em;
+  border-radius: 1.5em 1.5em 6em 1.5em;
+  box-shadow: 1px 1px 12px 0px rgba(20, 20, 20, 0.11);
+}
+
+.fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+.fields .input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+}
+.fields .input-group label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  color: hsl(0, 1%, 44%);
+  margin-bottom: 0.2em;
+  font-size: 0.8em;
+}
+.fields .input-group input {
+  width: 100%;
+  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: 0.3em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  font-size: 1.5em;
+  font-family: Poppins-Bold;
+}
+.fields .input-group input::placeholder {
+  text-transform: uppercase;
+  font-family: Poppins-Bold;
+  font-size: 0.9em;
+  color: hsl(0, 1%, 44%);
+  vertical-align: middle;
+}
+.fields .input-group input:focus {
+  outline: none;
+  border-color: hsl(259, 100%, 65%);
+  caret-color: hsl(259, 100%, 65%);
+}
+.fields .input-group .error-text {
+  margin-top: 0.5em;
+  font-family: Poppins-Italic;
+  font-size: 0.7em;
+  color: hsl(0, 100%, 67%);
+}
+.fields .input-group.error label {
+  color: hsl(0, 100%, 67%);
+}
+.fields .input-group.error input {
+  border-color: hsl(0, 100%, 67%);
+}
+
+.submit-container {
+  margin: 4em 0;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-container .line {
+  width: 100%;
+  height: 0.15em;
+  background: hsl(0, 0%, 94%);
+}
+.submit-container button {
+  background-color: hsl(259, 100%, 65%);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  width: 5.5em;
+  height: 5.5em;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins-Bold;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s;
+}
+.submit-container button svg {
+  width: 2.15em;
+}
+.submit-container button:hover {
+  background-color: hsl(0, 0%, 8%);
+}
+
+.result-container .category {
+  font-family: Poppins-ExtraBold-Italic;
+  font-size: 3em;
+  line-height: 1.2em;
+}
+.result-container .dash,
+.result-container .number {
+  color: hsl(259, 100%, 65%);
+}
+.result-container .date-section {
+  flex-grow: 1;
+}
+
+@media only screen and (min-width: 525px) {
+  main {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+  .fields {
+    max-width: 75%;
+  }
+  .fields .input-group input::placeholder {
+    font-size: 1.1em;
+  }
+  .submit-container {
+    margin-bottom: 2em;
+  }
+  .submit-container button {
+    transform: translate(0%, -50%);
+    right: 0;
+    left: auto;
+  }
+  .result-container .category {
+    font-size: 4.5em;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
