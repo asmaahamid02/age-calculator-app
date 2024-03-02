@@ -2,6 +2,7 @@ const form = document.querySelector('#dob-form')
 const inputGroups = document.querySelectorAll('.input-group')
 const errorPlaceholders = document.querySelectorAll('.error-text')
 const numbersPlaceholders = document.querySelectorAll('.number')
+const interval = 500
 
 const handleSubmit = (e) => {
   e.preventDefault()
@@ -163,9 +164,21 @@ const calculateAge = (day, month, year) => {
 }
 
 const updateDOM = (years, months, days) => {
-  numbersPlaceholders[0].innerText = pad(years)
-  numbersPlaceholders[1].innerText = pad(months)
-  numbersPlaceholders[2].innerText = pad(days)
+  animateNumber(0, years)
+  animateNumber(1, months)
+  animateNumber(2, days)
+}
+
+const animateNumber = (index, value) => {
+  let startValue = 0
+  const duration = Math.floor(interval / value)
+
+  const counter = setInterval(() => {
+    startValue += 1
+    numbersPlaceholders[index].innerText = pad(startValue)
+
+    if (startValue === parseInt(value)) clearInterval(counter)
+  }, duration)
 }
 
 const pad = (number) => (number < 10 ? `0${number}` : number)
