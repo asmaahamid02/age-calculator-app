@@ -164,6 +164,7 @@ const calculateAge = (day, month, year) => {
 }
 
 const updateDOM = (years, months, days) => {
+  console.log(years, months, days)
   animateNumber(0, years)
   animateNumber(1, months)
   animateNumber(2, days)
@@ -174,10 +175,9 @@ const animateNumber = (index, value) => {
   const duration = Math.floor(interval / value)
 
   const counter = setInterval(() => {
-    startValue += 1
     numbersPlaceholders[index].innerText = pad(startValue)
-
-    if (startValue === parseInt(value)) clearInterval(counter)
+    if (startValue === value) clearInterval(counter)
+    startValue += 1
   }, duration)
 }
 
