@@ -65,6 +65,8 @@ body {
   font-size: 16px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 2em);
   background-color: $off-white;
   color: $off-black;
 }
@@ -88,12 +90,24 @@ input[type='number'] {
   display: none;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
 main {
   padding: 2.5em 1.5em;
   width: 100%;
   max-width: 42em;
   background-color: $white;
-  margin: 7em 1em;
+  margin: 1em;
   border-radius: 1.5em 1.5em 6em 1.5em;
   box-shadow: 1px 1px 12px 0px rgba($color: $off-black, $alpha: 0.11);
 }
